@@ -2,6 +2,8 @@ FROM python:3.12-slim-bookworm as requirements-stage
 WORKDIR /tmp
 RUN pip install poetry && pip install poetry-plugin-export
 COPY ./pyproject.toml ./poetry.lock* /tmp/
+RUN rm poetry.lock
+RUN poetry lock
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 FROM python:3.12-slim-bookworm
