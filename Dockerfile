@@ -15,6 +15,7 @@ WORKDIR /code
 COPY --from=requirements-stage /tmp/requirements.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
+ENV PYTHONUNBUFFERED=1
     
 COPY ./pyproject.toml /code/
 COPY ./app /code/app

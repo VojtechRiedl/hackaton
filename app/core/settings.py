@@ -10,16 +10,16 @@ class DatabaseConfig(BaseModel):
     port: int
     user: str
     password: str
-    database: str
+    name: str
 
     def to_sqlalchemy_url(self):
-        return URL(
+        return URL.create(
             drivername="mariadb+pymysql",
             username=self.user,
             password=self.password,
             host=self.host,
             port=self.port,
-            database=self.database,
+            database=self.name,
         )
 
 
