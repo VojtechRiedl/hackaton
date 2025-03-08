@@ -33,7 +33,7 @@ class School(Base):
     school_zarizeni = relationship("SchoolZarizeni", back_populates="school")
 
 class SchoolZarizeni(Base):
-    __tablename__ = "school_izo"
+    __tablename__ = "schools_izo"
 
     izo = Column(Integer, primary_key=True)
     ico = Column(Integer, ForeignKey("schools.ico"), nullable=True)
@@ -48,7 +48,7 @@ class SchoolStrediska(Base):
     __tablename__ = "schools_strediska"
 
     id = Column(Integer, primary_key=True)
-    izo = Column(Integer, ForeignKey("school_izo.izo"), nullable=True)
+    izo = Column(Integer, ForeignKey("schools_izo.izo"), nullable=True)
     adresa = Column(Integer, ForeignKey("Mista.id"), nullable=True)
 
     misto = relationship("Mista", back_populates="school_strediska")
