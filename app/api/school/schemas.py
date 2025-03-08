@@ -31,10 +31,10 @@ class School(BaseModel):
     konali_m: int | None = Field(description="Počet konalých zkoušek z matematiky")
     nekonali_cj: int | None = Field(description="Počet nekonalých zkoušek z českého jazyka")
     nekonali_m: int | None = Field(description="Počet nekonalých zkoušek z matematiky")
-    percent_m: float | None = Field(description="Procento úspěšnosti z matematiky")
-    percent_cj: float | None = Field(description="Procento úspěšnosti z českého jazyka")
-    odchylka_m: float | None = Field(description="Odchylka z matematiky")
-    odchylka_cj: float | None = Field(description="Odchylka z českého jazyka")
+    percent_m: str | None = Field(description="Procento úspěšnosti z matematiky")
+    percent_cj: str | None = Field(description="Procento úspěšnosti z českého jazyka")
+    odchylka_m: str | None = Field(description="Odchylka z matematiky")
+    odchylka_cj: str | None = Field(description="Odchylka z českého jazyka")
 
 
 class SchoolFinance(BaseModel):
