@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .api.kraje.router import kraje_router
+from .api.school.router import school_router
 app = FastAPI(
     title="SKIBIDI"
 )
@@ -21,3 +22,4 @@ app.add_middleware(
 )
 
 app.include_router(kraje_router)
+app.include_router(school_router)
