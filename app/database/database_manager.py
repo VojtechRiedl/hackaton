@@ -1,7 +1,6 @@
 from sqlalchemy.orm import Session
 
 from ..database import models
-from ..api.school.schemas import SkolniZarizeni
 
 def get_okresy_from_kraj(kraj_id: int, db: Session) -> list[models.Okres]:
     okresy = db.query(models.Okres).filter(models.Okres.VuscKod == kraj_id).all()

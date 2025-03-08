@@ -3,14 +3,16 @@ from sqlalchemy.orm import Session
 
 from ...database import database_manager
 
+from .schemas import School
+
 def school_zarizeni_by_okres(okres_id: int, db: Session):
 
-    return [{
-        "lan": a.lantitude,
-        "lon": a.lontitude,
-        "zarizeni": b.nazev, 
-        "nazev": c.nazev,
-    } for a, b, c in database_manager.get_schools_zarizeni_by_okres(okres_id, db)]
-
-
-    return database_manager.get_schools_zarizeni_by_okres(okres_id, db)
+    return [School(
+        lantitude=a.lantitude,
+        lontitude=a.lontitude,
+        zarizeni=b.nazev,
+        nazev=c.nazev,
+        obec=a.obec,
+        cislo_orientacni=a.cislo_orientacni,
+        cislo_domovni=a.cislo_domovni
+    ) for a, b, c in database_manager.get_schools_zarizeni_by_okres(okres_id, db)]

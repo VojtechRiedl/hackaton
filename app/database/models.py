@@ -2,7 +2,7 @@
 from .database_connection import Base
 from sqlalchemy.orm import relationship
 
-from sqlalchemy import Column, Text, Integer, ForeignKey, Double
+from sqlalchemy import Column, Text, Integer, ForeignKey, Double, String
 
 
 class Okres(Base):
@@ -66,5 +66,6 @@ class Mista(Base):
     lantitude = Column(Double, nullable=True)
     okres_id = Column(Integer, nullable=True)
     kraj_id = Column(Integer, nullable=True)
+    obec = Column(String, nullable=True)
     
     school_strediska = relationship("SchoolStrediska", back_populates="misto")
