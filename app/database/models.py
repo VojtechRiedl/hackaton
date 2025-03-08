@@ -2,7 +2,7 @@
 from .database_connection import Base
 from sqlalchemy.orm import relationship
 
-from sqlalchemy import Column, Text, Integer, ForeignKey, Double, String
+from sqlalchemy import Column, Text, Integer, ForeignKey, Double, String, Boolean
 
 
 class Okres(Base):
@@ -33,6 +33,11 @@ class School(Base):
     ruain = Column(Integer, nullable=True)
     head_name = Column(String, nullable=True)
     head_address = Column(String, nullable=True)
+    pocet_studentu = Column(Integer, nullable=True)
+    pocet_uceben = Column(Integer, nullable=True)
+    pocet_notebook = Column(Integer, nullable=True)
+    pocet_pc = Column(Integer, nullable=True)
+    wifi = Column(Boolean, nullable=True)
 
     school_zarizeni = relationship("SchoolZarizeni", back_populates="school")
 

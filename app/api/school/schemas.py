@@ -20,6 +20,11 @@ class School(BaseModel):
     cislo_domovni: int | None = Field(description="Číslo domovní")
     cislo_orientacni: int | None = Field(description="Číslo orientační")
     red_izo: int = Field(description="Číslo IZO školního zařízení")
+    pocet_uceben: int | None = Field(description="Počet učeben")
+    pocet_notebook: int | None = Field(description="Počet notebooků")
+    pocet_pc: int | None = Field(description="Počet PC")
+    wifi: bool | None = Field(description="Připojení k internetu")
+    pocet_studentu: int | None = Field(description="Počet studentů")
 
 
 class SchoolFinance(BaseModel):
