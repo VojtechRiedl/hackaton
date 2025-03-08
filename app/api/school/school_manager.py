@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from ...database import database_manager
 
-from .schemas import School
+from .schemas import School, SchoolFinance
 
 
 def school_zarizeni_by_okres(okres_id: int, db: Session):
@@ -25,7 +25,11 @@ def school_by_red_izo(izo: int, db: Session):
 
 
 def get_finance(obdobi: int, db: Session):
-    return database_manager.get_finance(obdobi, db)
+    return [SchoolFinance(
+        lantitude=b.lantitude,
+        lontitude=b.lontitude,
+        **a.__dict__
+    ) for a, b in database_manager.get_finance(obdobi, db)]
 
 
 def get_school_finance(obdobi: int, red_izo: int, db: Session):
