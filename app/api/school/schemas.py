@@ -12,6 +12,8 @@ class School(BaseModel):
         description="Zeměpisná šířka školního zařízení")
     lontitude: float | None = Field(
         description="Zeměpisná délka školního zařízení")
+    head_name: str | None = Field(description="Jméno ředitele")
+    head_address: str | None = Field(description="Příjmení ředitele")
     zarizeni: str = Field(description="Název školního zařízení")
     nazev: str | None = Field(description="Název školy")
     obec: str | None = Field(description="Název obce")

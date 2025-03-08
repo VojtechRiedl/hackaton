@@ -5,7 +5,6 @@ from ...database.database_connection import get_db
 from sqlalchemy.orm import Session
 
 from . import school_manager
-from ..okresy.schemas import Okres
 
 
 school_router = APIRouter(prefix="/school", tags=["školy"])

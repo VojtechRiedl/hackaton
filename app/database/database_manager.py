@@ -13,9 +13,9 @@ def get_schools_zarizeni_by_okres(okres_id: int, db: Session):
 
     schools = (
         db.query(models.Mista, models.SchoolZarizeni, models.School)
-        .join(models.SchoolStrediska, models.Mista.id == models.SchoolStrediska.adresa)
-        .join(models.SchoolZarizeni, models.SchoolStrediska.izo == models.SchoolZarizeni.izo)
-        .join(models.School, models.School.ico == models.SchoolZarizeni.ico)
+        .join(models.SchoolStrediska, models.Mista.id == models.SchoolStrediska.adresa, isouter=True)
+        .join(models.SchoolZarizeni, models.SchoolStrediska.izo == models.SchoolZarizeni.izo, isouter=True)
+        .join(models.School, models.School.ico == models.SchoolZarizeni.ico, isouter=True)
         .filter(models.Mista.okres_id == okres_id)
         .all()
     )
