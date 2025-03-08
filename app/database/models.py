@@ -36,6 +36,7 @@ class School(Base):
 
     finance = relationship("Finance", back_populates="school")
 
+
 class SchoolZarizeni(Base):
     __tablename__ = "schools_izo"
 
@@ -82,28 +83,27 @@ class Mista(Base):
 class Finance(Base):
     __tablename__ = "financni_data"
 
-
     id = Column(Integer, primary_key=True)
     ico = Column(Integer, ForeignKey("schools.ico"))
     obdobi = Column(Integer, index=True)
-    dlouhmmaj = Column(Integer, nullable=True)
-    krpohlbrut = Column(Integer, nullable=True)
-    cizzdr = Column(Integer, nullable=True)
-    prijdluh = Column(Integer, nullable=True)
-    kratzav = Column(Integer, nullable=True)
-    uroky = Column(Integer, nullable=True)
-    vydaje = Column(Integer, nullable=True)
-    pocob = Column(Integer, nullable=True)
-    aktiva = Column(Integer, nullable=True)
-    saldo = Column(Integer, nullable=True)
-    naklady = Column(Integer, nullable=True)
-    dlouzav  = Column(Integer, nullable=True)
-    vynosy = Column(Integer, nullable=True)
-    prijmy = Column(Integer, nullable=True)
-    dluhcelk = Column(Integer, nullable=True)
-    vysledek = Column(Integer, nullable=True)
-    uhrdluh = Column(Integer, nullable=True)
-    pohlbrut = Column(Integer, nullable=True)
-    kratfinmaj = Column(Integer, nullable=True)
+    dlouhmmaj = Column(Double, nullable=True)
+    krpohlbrut = Column(Double, nullable=True)
+    cizzdr = Column(Double, nullable=True)
+    prijdluh = Column(Double, nullable=True)
+    kratzav = Column(Double, nullable=True)
+    uroky = Column(Double, nullable=True)
+    vydaje = Column(Double, nullable=True)
+    pocob = Column(Double, nullable=True)
+    aktiva = Column(Double, nullable=True)
+    saldo = Column(Double, nullable=True)
+    naklady = Column(Double, nullable=True)
+    dlouzav = Column(Double, nullable=True)
+    vynosy = Column(Double, nullable=True)
+    prijmy = Column(Double, nullable=True)
+    dluhcelk = Column(Double, nullable=True)
+    vysledek = Column(Double, nullable=True)
+    uhrdluh = Column(Double, nullable=True)
+    pohlbrut = Column(Double, nullable=True)
+    kratfinmaj = Column(Double, nullable=True)
 
     school = relationship("School", back_populates="finance")
