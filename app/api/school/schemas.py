@@ -25,6 +25,16 @@ class School(BaseModel):
     pocet_pc: int | None = Field(description="Počet PC")
     wifi: bool | None = Field(description="Připojení k internetu")
     pocet_studentu: int | None = Field(description="Počet studentů")
+    prihlaseni_cj: int | None = Field(description="Počet přihlášených studentů na český jazyk")
+    prihlaseni_m: int | None = Field(description="Počet přihlášených studentů na matematiku")
+    konali_cj: int | None = Field(description="Počet konalých zkoušek z českého jazyka")
+    konali_m: int | None = Field(description="Počet konalých zkoušek z matematiky")
+    nekonali_cj: int | None = Field(description="Počet nekonalých zkoušek z českého jazyka")
+    nekonali_m: int | None = Field(description="Počet nekonalých zkoušek z matematiky")
+    percent_m: float | None = Field(description="Procento úspěšnosti z matematiky")
+    percent_cj: float | None = Field(description="Procento úspěšnosti z českého jazyka")
+    odchylka_m: float | None = Field(description="Odchylka z matematiky")
+    odchylka_cj: float | None = Field(description="Odchylka z českého jazyka")
 
 
 class SchoolFinance(BaseModel):

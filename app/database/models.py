@@ -38,6 +38,16 @@ class School(Base):
     pocet_notebook = Column(Integer, nullable=True)
     pocet_pc = Column(Integer, nullable=True)
     wifi = Column(Boolean, nullable=True)
+    prihlaseni_cj = Column(Integer, nullable=True)
+    prihlaseni_m = Column(Integer, nullable=True)
+    konali_cj = Column(Integer, nullable=True)
+    konali_m = Column(Integer, nullable=True)
+    nekonali_cj = Column(Integer, nullable=True)
+    nekonali_m = Column(Integer, nullable=True)
+    percent_m = Column(Text, nullable=True)
+    percent_cj = Column(Text, nullable=True)
+    odchylka_m = Column(Text, nullable=True)
+    odchylka_cj = Column(Text, nullable=True)
 
     school_zarizeni = relationship("SchoolZarizeni", back_populates="school")
 

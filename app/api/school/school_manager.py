@@ -12,18 +12,10 @@ def school_zarizeni_by_okres(okres_id: int, db: Session):
         lantitude=a.lantitude,
         lontitude=a.lontitude,
         zarizeni=b.nazev,
-        nazev=c.nazev,
         obec=a.obec,
         cislo_orientacni=a.cislo_orientacni,
         cislo_domovni=a.cislo_domovni,
-        red_izo=c.red_izo,
-        head_address=c.head_address,
-        head_name=c.head_name,
-        pocet_studentu=c.pocet_studentu,
-        pocet_uceben=c.pocet_uceben,
-        pocet_notebook=c.pocet_notebook,
-        pocet_pc=c.pocet_pc,
-        wifi=c.wifi
+        **c.__dict__
     ) for a, b, c in database_manager.get_schools_zarizeni_by_okres(okres_id, db)]
 
 

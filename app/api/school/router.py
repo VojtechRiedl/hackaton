@@ -31,5 +31,5 @@ def get_school_finance(obdobi: int, red_izo: int, db: Session = Depends(get_db))
 
 
 @school_router.get("/ciselnik")
-def get_ciselnik(db: Session = Depends(get_db)):
+def get_ciselnik():
     return {'A00': 'Mateřská škola', 'B00': 'Základní škola', 'C00': 'Střední škola', 'D00': 'Konzervatoř', 'E00': 'Vyšší odborná škola'}
