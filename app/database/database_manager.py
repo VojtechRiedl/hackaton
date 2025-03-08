@@ -30,7 +30,7 @@ def get_school_by_red_izo(izo: int, db: Session):
 
 def get_finance(obdobi: int, db: Session):
 
-    return db.query(models.Finance, models.School).join(models.School, models.School.ico == models.Finance.ico).filter(models.Finance.obdobi == obdobi).all()
+    return db.query(models.Finance, models.Mista).join(models.School, models.School.ico == models.Finance.ico).join(models.Mista, models.Mista.id == models.School.ruain).filter(models.Finance.obdobi == obdobi).all()
 
 
 def get_school_finance(obdobi: int, red_izo: int, db: Session):

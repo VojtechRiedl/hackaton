@@ -30,6 +30,7 @@ class School(Base):
     red_izo = Column(Integer)
     ico = Column(Integer, primary_key=True)
     nazev = Column(Text, nullable=True)
+    ruain = Column(Integer, nullable=True)
 
     school_zarizeni = relationship("SchoolZarizeni", back_populates="school")
 
