@@ -75,3 +75,29 @@ class Mista(Base):
     obec = Column(String, nullable=True)
 
     school_strediska = relationship("SchoolStrediska", back_populates="misto")
+
+
+class Finance(Base):
+    __tablename__ = "financni_data"
+
+    ico = Column(Integer, primary_key=True)
+    dlouhmmaj = Column(Integer, nullable=True)
+    krpohlbrut = Column(Integer, nullable=True)
+    krpohlhrub = Column(Integer, nullable=True)
+    cizzdr = Column(Integer, nullable=True)
+    prijdluh = Column(Integer, nullable=True)
+    kratzav = Column(Integer, nullable=True)
+    uroky = Column(Integer, nullable=True)
+    vydaje = Column(Integer, nullable=True)
+    pocob = Column(Integer, nullable=True)
+    aktiva = Column(Integer, nullable=True)
+    saldo = Column(Integer, nullable=True)
+    naklady = Column(Integer, nullable=True)
+    dlouhaz  = Column(Integer, nullable=True)
+    vynosy = Column(Integer, nullable=True)
+    prijmy = Column(Integer, nullable=True)
+    dlucelk = Column(Integer, nullable=True)
+    vysledek = Column(Integer, nullable=True)
+    uhrdluh = Column(Integer, nullable=True)
+    pohlbrut = Column(Integer, nullable=True)
+    kratfinmaj = Column(Integer, nullable=True)

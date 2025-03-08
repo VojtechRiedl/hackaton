@@ -15,7 +15,8 @@ def school_zarizeni_by_okres(okres_id: int, db: Session):
         nazev=c.nazev,
         obec=a.obec,
         cislo_orientacni=a.cislo_orientacni,
-        cislo_domovni=a.cislo_domovni
+        cislo_domovni=a.cislo_domovni,
+        red_izo=c.red_izo
     ) for a, b, c in database_manager.get_schools_zarizeni_by_okres(okres_id, db)]
 
 

@@ -15,3 +15,4 @@ class School(BaseModel):
     obec: str | None = Field(description="Název obce")
     cislo_domovni: int | None = Field(description="Číslo domovní")
     cislo_orientacni: int | None = Field(description="Číslo orientační")
+    red_izo: int = Field(description="Číslo IZO školního zařízení")
