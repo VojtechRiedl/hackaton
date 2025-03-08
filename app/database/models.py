@@ -33,6 +33,7 @@ class School(Base):
 
     school_zarizeni = relationship("SchoolZarizeni", back_populates="school")
 
+    finance = relationship("Finance", back_populates="school")
 
 class SchoolZarizeni(Base):
     __tablename__ = "schools_izo"
@@ -80,10 +81,12 @@ class Mista(Base):
 class Finance(Base):
     __tablename__ = "financni_data"
 
-    ico = Column(Integer, primary_key=True)
+
+    id = Column(Integer, primary_key=True)
+    ico = Column(Integer, ForeignKey("schools.ico"))
+    obdobi = Column(Integer, index=True)
     dlouhmmaj = Column(Integer, nullable=True)
     krpohlbrut = Column(Integer, nullable=True)
-    krpohlhrub = Column(Integer, nullable=True)
     cizzdr = Column(Integer, nullable=True)
     prijdluh = Column(Integer, nullable=True)
     kratzav = Column(Integer, nullable=True)
@@ -93,11 +96,13 @@ class Finance(Base):
     aktiva = Column(Integer, nullable=True)
     saldo = Column(Integer, nullable=True)
     naklady = Column(Integer, nullable=True)
-    dlouhaz  = Column(Integer, nullable=True)
+    dlouzav  = Column(Integer, nullable=True)
     vynosy = Column(Integer, nullable=True)
     prijmy = Column(Integer, nullable=True)
-    dlucelk = Column(Integer, nullable=True)
+    dluhcelk = Column(Integer, nullable=True)
     vysledek = Column(Integer, nullable=True)
     uhrdluh = Column(Integer, nullable=True)
     pohlbrut = Column(Integer, nullable=True)
     kratfinmaj = Column(Integer, nullable=True)
+
+    school = relationship("School", back_populates="finance")

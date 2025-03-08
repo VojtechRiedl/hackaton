@@ -25,3 +25,14 @@ def get_schools_zarizeni_by_okres(okres_id: int, db: Session):
 
 def get_school_by_red_izo(izo: int, db: Session):
     return db.query(models.School).filter(models.School.red_izo == izo).first()
+
+
+
+def get_finance(obdobi: int, db: Session):
+
+    return db.query(models.Finance).filter(models.Finance.obdobi == obdobi).all()
+
+
+def get_school_finance(obdobi: int, red_izo: int, db: Session):
+
+    return db.query(models.Finance).join(models.School, models.School.ico == models.Finance.ico).filter(models.Finance.obdobi == obdobi, models.School.red_izo == red_izo).first()

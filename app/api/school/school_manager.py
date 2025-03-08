@@ -22,3 +22,11 @@ def school_zarizeni_by_okres(okres_id: int, db: Session):
 
 def school_by_red_izo(izo: int, db: Session):
     return database_manager.get_school_by_red_izo(izo, db)
+
+
+def get_finance(obdobi: int, db: Session):
+    return database_manager.get_finance(obdobi, db)
+
+
+def get_school_finance(obdobi: int, red_izo: int, db: Session):
+    return database_manager.get_school_finance(obdobi, red_izo, db)

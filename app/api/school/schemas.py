@@ -8,8 +8,8 @@ class SkolniZarizeni(BaseModel):
 
 class School(BaseModel):
 
-    lantitude: float = Field(description="Zeměpisná šířka školního zařízení")
-    lontitude: float = Field(description="Zeměpisná délka školního zařízení")
+    lantitude: float | None = Field(description="Zeměpisná šířka školního zařízení")
+    lontitude: float | None  = Field(description="Zeměpisná délka školního zařízení")
     zarizeni: str = Field(description="Název školního zařízení")
     nazev: str | None = Field(description="Název školy")
     obec: str | None = Field(description="Název obce")
