@@ -23,14 +23,16 @@ class kraj(Base):
     Nazev = Column(Text, nullable=True)
     geometry = Column(Text, nullable=True)
 
-class School(Base):
-    __tablename__ = "schools"   
 
+class School(Base):
+    __tablename__ = "schools"
+
+    red_izo = Column(Integer)
     ico = Column(Integer, primary_key=True)
     nazev = Column(Text, nullable=True)
 
-
     school_zarizeni = relationship("SchoolZarizeni", back_populates="school")
+
 
 class SchoolZarizeni(Base):
     __tablename__ = "schools_izo"
@@ -42,7 +44,9 @@ class SchoolZarizeni(Base):
 
     school = relationship("School", back_populates="school_zarizeni")
 
-    school_strediska = relationship("SchoolStrediska", back_populates="school_zarizeni")
+    school_strediska = relationship(
+        "SchoolStrediska", back_populates="school_zarizeni")
+
 
 class SchoolStrediska(Base):
     __tablename__ = "schools_strediska"
@@ -53,7 +57,9 @@ class SchoolStrediska(Base):
 
     misto = relationship("Mista", back_populates="school_strediska")
 
-    school_zarizeni = relationship("SchoolZarizeni", back_populates="school_strediska")
+    school_zarizeni = relationship(
+        "SchoolZarizeni", back_populates="school_strediska")
+
 
 class Mista(Base):
     __tablename__ = "Mista"
@@ -67,5 +73,5 @@ class Mista(Base):
     okres_id = Column(Integer, nullable=True)
     kraj_id = Column(Integer, nullable=True)
     obec = Column(String, nullable=True)
-    
+
     school_strediska = relationship("SchoolStrediska", back_populates="misto")

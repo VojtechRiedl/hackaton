@@ -2,8 +2,10 @@ from sqlalchemy.orm import Session
 
 from ..database import models
 
+
 def get_okresy_from_kraj(kraj_id: int, db: Session) -> list[models.Okres]:
-    okresy = db.query(models.Okres).filter(models.Okres.VuscKod == kraj_id).all()
+    okresy = db.query(models.Okres).filter(
+        models.Okres.VuscKod == kraj_id).all()
     return okresy
 
 
@@ -19,3 +21,7 @@ def get_schools_zarizeni_by_okres(okres_id: int, db: Session):
     )
 
     return schools
+
+
+def get_school_by_red_izo(izo: int, db: Session):
+    return db.query(models.School).filter(models.School.red_izo == izo).first()
