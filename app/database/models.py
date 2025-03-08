@@ -2,7 +2,7 @@
 from .database_connection import Base
 from sqlalchemy.orm import relationship
 
-from sqlalchemy import Column, Text, Integer, ForeignKey
+from sqlalchemy import Column, Text, Integer, ForeignKey, Double
 
 
 class Okres(Base):
@@ -14,7 +14,6 @@ class Okres(Base):
     VuscKod = Column(Integer, nullable=True)
     geometry = Column(Text, nullable=True)
 
-    obec = relationship("Obec", back_populates="okres")
 
 class kraj(Base):
     __tablename__ = "kraje"
@@ -23,31 +22,6 @@ class kraj(Base):
     Kod = Column(Integer, nullable=True)
     Nazev = Column(Text, nullable=True)
     geometry = Column(Text, nullable=True)
-
-
-class Obec(Base):
-    __tablename__ = "Obce"
-
-    Kod = Column(Integer, primary_key=True)
-    Nazev = Column(Text, nullable=True)
-    geometry = Column(Text, nullable=True)
-    OkresKod = Column(Integer, ForeignKey("Okresy.Kod"), nullable=True)
-
-    okres = relationship("Okres", back_populates="obec")
-
-    cast_obce = relationship("CastObce", back_populates="obec")
-
-class CastObce(Base):
-    __tablename__ = "CastiObci"
-
-    Kod = Column(Integer, primary_key=True)
-    Nazev = Column(Text, nullable=True)
-    geometry = Column(Text, nullable=True)
-    ObecKod = Column(Integer, ForeignKey("Obce.Kod"), nullable=True)
-
-    obec = relationship("Obec", back_populates="cast_obce")
-
-    stavebni_objekty = relationship("StavebniObjekt", back_populates="cast_obce")
 
 class School(Base):
     __tablename__ = "schools"   
@@ -75,35 +49,22 @@ class SchoolStrediska(Base):
 
     id = Column(Integer, primary_key=True)
     izo = Column(Integer, ForeignKey("school_izo.izo"), nullable=True)
-    adresa = Column(Integer, ForeignKey("AdresniMista.Kod"), nullable=True)
+    adresa = Column(Integer, ForeignKey("Mista.id"), nullable=True)
 
-    address = relationship("Address", back_populates="school_strediska")
+    misto = relationship("Mista", back_populates="school_strediska")
 
     school_zarizeni = relationship("SchoolZarizeni", back_populates="school_strediska")
 
+class Mista(Base):
+    __tablename__ = "Mista"
 
-class Address(Base):
-    __tablename__ = "AdresniMista"
-
-    Kod = Column(Integer, primary_key=True)
-    geometry = Column(Text, nullable=True)
-    StavebniObjektKod = Column(Integer, ForeignKey("StavebniObjekty.Kod"), nullable=True)
-
-    stavebni_objekty = relationship("StavebniObjekt", back_populates="address")
-
-    school_strediska = relationship("SchoolStrediska", back_populates="address")
-
+    id = Column(Integer, primary_key=True)
+    cislo_domovni = Column(Integer, nullable=True)
+    cislo_orientacni = Column(Integer, nullable=True)
+    psc = Column(Integer, nullable=True)
+    lontitude = Column(Double, nullable=True)
+    lantitude = Column(Double, nullable=True)
+    okres_id = Column(Integer, nullable=True)
+    kraj_id = Column(Integer, nullable=True)
     
-
-class StavebniObjekt(Base):
-    __tablename__ = "StavebniObjekty"
-
-    Kod = Column(Integer, primary_key=True)
-    Nazev = Column(Text, nullable=True)
-    geometry = Column(Text, nullable=True)
-    CastObceKod = Column(Integer, ForeignKey("CastiObci.Kod"), nullable=True)
-
-    cast_obce = relationship("CastObce", back_populates="stavebni_objekty")
-
-    address = relationship("Address", back_populates="stavebni_objekty")
-
+    school_strediska = relationship("SchoolStrediska", back_populates="misto")
